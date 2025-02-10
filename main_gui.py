@@ -1,0 +1,370 @@
+# -*- coding: utf-8 -*-
+
+################################################################################
+## Form generated from reading UI file 'main_gui.ui'
+##
+## Created by: Qt User Interface Compiler version 6.8.2
+##
+## WARNING! All changes made in this file will be lost when recompiling UI file!
+################################################################################
+
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QDateTimeEdit, QFrame,
+    QHBoxLayout, QHeaderView, QLabel, QMainWindow,
+    QPushButton, QSizePolicy, QTabWidget, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(800, 480)
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.tabWidget = QTabWidget(self.centralwidget)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setGeometry(QRect(10, 10, 780, 460))
+        self.tabWidget.setLayoutDirection(Qt.LeftToRight)
+        self.tabWidget.setTabPosition(QTabWidget.North)
+        self.tabWidget.setMovable(False)
+        self.tab_main = QWidget()
+        self.tab_main.setObjectName(u"tab_main")
+        self.layoutWidget_4 = QWidget(self.tab_main)
+        self.layoutWidget_4.setObjectName(u"layoutWidget_4")
+        self.layoutWidget_4.setGeometry(QRect(20, 10, 261, 45))
+        self.horizontalLayout_6 = QHBoxLayout(self.layoutWidget_4)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.label = QLabel(self.layoutWidget_4)
+        self.label.setObjectName(u"label")
+        self.label.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+
+        self.horizontalLayout_6.addWidget(self.label)
+
+        self.lbl_StartTime = QLabel(self.layoutWidget_4)
+        self.lbl_StartTime.setObjectName(u"lbl_StartTime")
+        self.lbl_StartTime.setStyleSheet(u"font: 36pt \".AppleSystemUIFont\";\n"
+"color: rgb(7, 64, 128);")
+        self.lbl_StartTime.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.horizontalLayout_6.addWidget(self.lbl_StartTime)
+
+        self.label_4 = QLabel(self.tab_main)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(560, 0, 131, 31))
+        self.label_4.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+        self.label_12 = QLabel(self.tab_main)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setGeometry(QRect(690, 0, 81, 81))
+        self.label_12.setPixmap(QPixmap(u"logo.png"))
+        self.layoutWidget_2 = QWidget(self.tab_main)
+        self.layoutWidget_2.setObjectName(u"layoutWidget_2")
+        self.layoutWidget_2.setGeometry(QRect(19, 333, 297, 90))
+        self.horizontalLayout_5 = QHBoxLayout(self.layoutWidget_2)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.horizontalLayout_3 = QHBoxLayout()
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.label_7 = QLabel(self.layoutWidget_2)
+        self.label_7.setObjectName(u"label_7")
+
+        self.horizontalLayout_3.addWidget(self.label_7)
+
+        self.label_8 = QLabel(self.layoutWidget_2)
+        self.label_8.setObjectName(u"label_8")
+
+        self.horizontalLayout_3.addWidget(self.label_8)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+
+        self.lbl_Power = QLabel(self.layoutWidget_2)
+        self.lbl_Power.setObjectName(u"lbl_Power")
+        self.lbl_Power.setStyleSheet(u"font: 48pt \".AppleSystemUIFont\";\n"
+"color: rgb(7, 64, 128);")
+
+        self.verticalLayout_2.addWidget(self.lbl_Power)
+
+
+        self.horizontalLayout_5.addLayout(self.verticalLayout_2)
+
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.label_10 = QLabel(self.layoutWidget_2)
+        self.label_10.setObjectName(u"label_10")
+
+        self.horizontalLayout_4.addWidget(self.label_10)
+
+        self.label_9 = QLabel(self.layoutWidget_2)
+        self.label_9.setObjectName(u"label_9")
+
+        self.horizontalLayout_4.addWidget(self.label_9)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_4)
+
+        self.lbl_Energy = QLabel(self.layoutWidget_2)
+        self.lbl_Energy.setObjectName(u"lbl_Energy")
+        self.lbl_Energy.setStyleSheet(u"font: 48pt \".AppleSystemUIFont\";\n"
+"color: rgb(7, 64, 128);")
+
+        self.verticalLayout_3.addWidget(self.lbl_Energy)
+
+
+        self.horizontalLayout_5.addLayout(self.verticalLayout_3)
+
+        self.layoutWidget = QWidget(self.tab_main)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(20, 220, 232, 109))
+        self.verticalLayout_4 = QVBoxLayout(self.layoutWidget)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.label_3 = QLabel(self.layoutWidget)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+
+        self.horizontalLayout_2.addWidget(self.label_3)
+
+        self.label_6 = QLabel(self.layoutWidget)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+
+        self.horizontalLayout_2.addWidget(self.label_6)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
+
+        self.lbl_Preformance = QLabel(self.layoutWidget)
+        self.lbl_Preformance.setObjectName(u"lbl_Preformance")
+        self.lbl_Preformance.setStyleSheet(u"font: 60pt \".AppleSystemUIFont\";\n"
+"color: rgb(128, 0, 2);")
+
+        self.verticalLayout_4.addWidget(self.lbl_Preformance)
+
+        self.layoutWidget_3 = QWidget(self.tab_main)
+        self.layoutWidget_3.setObjectName(u"layoutWidget_3")
+        self.layoutWidget_3.setGeometry(QRect(20, 60, 256, 156))
+        self.verticalLayout = QVBoxLayout(self.layoutWidget_3)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.label_2 = QLabel(self.layoutWidget_3)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+
+        self.horizontalLayout.addWidget(self.label_2)
+
+        self.label_5 = QLabel(self.layoutWidget_3)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+
+        self.horizontalLayout.addWidget(self.label_5)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout)
+
+        self.lbl_CountTotal = QLabel(self.layoutWidget_3)
+        self.lbl_CountTotal.setObjectName(u"lbl_CountTotal")
+        self.lbl_CountTotal.setStyleSheet(u"font: 100pt \".AppleSystemUIFont\";\n"
+"color: rgb(16, 128, 64);")
+
+        self.verticalLayout.addWidget(self.lbl_CountTotal)
+
+        self.label_19 = QLabel(self.tab_main)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setGeometry(QRect(520, 30, 171, 31))
+        self.label_19.setStyleSheet(u"font: 24pt \".AppleSystemUIFont\";")
+        self.twDB = QTableWidget(self.tab_main)
+        self.twDB.setObjectName(u"twDB")
+        self.twDB.setGeometry(QRect(331, 93, 441, 291))
+        self.twDB.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.label_11 = QLabel(self.tab_main)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setGeometry(QRect(330, 70, 115, 24))
+        self.label_11.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+        self.widget = QWidget(self.tab_main)
+        self.widget.setObjectName(u"widget")
+        self.horizontalLayout_7 = QHBoxLayout(self.widget)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.btn_update = QPushButton(self.tab_main)
+        self.btn_update.setObjectName(u"btn_update")
+        self.btn_update.setGeometry(QRect(659, 390, 111, 32))
+        self.btn_update.setStyleSheet(u"")
+        self.btn_update.setIconSize(QSize(32, 16))
+        self.tabWidget.addTab(self.tab_main, "")
+        self.tab_results = QWidget()
+        self.tab_results.setObjectName(u"tab_results")
+        self.tw_Resulte_DB = QTableWidget(self.tab_results)
+        self.tw_Resulte_DB.setObjectName(u"tw_Resulte_DB")
+        self.tw_Resulte_DB.setGeometry(QRect(10, 220, 751, 201))
+        self.tw_Resulte_DB.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.btn_LoadDB = QPushButton(self.tab_results)
+        self.btn_LoadDB.setObjectName(u"btn_LoadDB")
+        self.btn_LoadDB.setGeometry(QRect(370, 10, 113, 32))
+        self.label_13 = QLabel(self.tab_results)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setGeometry(QRect(20, 90, 60, 16))
+        self.label_14 = QLabel(self.tab_results)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setGeometry(QRect(380, 90, 121, 16))
+        self.label_15 = QLabel(self.tab_results)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setGeometry(QRect(380, 120, 111, 16))
+        self.label_16 = QLabel(self.tab_results)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setGeometry(QRect(20, 120, 91, 16))
+        self.label_17 = QLabel(self.tab_results)
+        self.label_17.setObjectName(u"label_17")
+        self.label_17.setGeometry(QRect(20, 150, 71, 16))
+        self.label_18 = QLabel(self.tab_results)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setGeometry(QRect(380, 150, 71, 16))
+        self.btn_Delete = QPushButton(self.tab_results)
+        self.btn_Delete.setObjectName(u"btn_Delete")
+        self.btn_Delete.setGeometry(QRect(630, 180, 113, 32))
+        self.btn_Edit = QPushButton(self.tab_results)
+        self.btn_Edit.setObjectName(u"btn_Edit")
+        self.btn_Edit.setGeometry(QRect(510, 180, 113, 32))
+        self.lbl_Resulte_RecordTime = QLabel(self.tab_results)
+        self.lbl_Resulte_RecordTime.setObjectName(u"lbl_Resulte_RecordTime")
+        self.lbl_Resulte_RecordTime.setGeometry(QRect(130, 90, 60, 16))
+        self.lbl_Resulte_StartTime = QLabel(self.tab_results)
+        self.lbl_Resulte_StartTime.setObjectName(u"lbl_Resulte_StartTime")
+        self.lbl_Resulte_StartTime.setGeometry(QRect(510, 90, 60, 16))
+        self.lbl_Resulte_Preformance = QLabel(self.tab_results)
+        self.lbl_Resulte_Preformance.setObjectName(u"lbl_Resulte_Preformance")
+        self.lbl_Resulte_Preformance.setGeometry(QRect(510, 120, 60, 16))
+        self.lbl_Resulte_energy = QLabel(self.tab_results)
+        self.lbl_Resulte_energy.setObjectName(u"lbl_Resulte_energy")
+        self.lbl_Resulte_energy.setGeometry(QRect(510, 150, 60, 16))
+        self.lbl_Resulte_power = QLabel(self.tab_results)
+        self.lbl_Resulte_power.setObjectName(u"lbl_Resulte_power")
+        self.lbl_Resulte_power.setGeometry(QRect(130, 150, 60, 16))
+        self.lbl_Resulte_TotalCount = QLabel(self.tab_results)
+        self.lbl_Resulte_TotalCount.setObjectName(u"lbl_Resulte_TotalCount")
+        self.lbl_Resulte_TotalCount.setGeometry(QRect(130, 120, 60, 16))
+        self.label_20 = QLabel(self.tab_results)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setGeometry(QRect(20, 20, 31, 16))
+        self.label_21 = QLabel(self.tab_results)
+        self.label_21.setObjectName(u"label_21")
+        self.label_21.setGeometry(QRect(200, 20, 31, 16))
+        self.label_22 = QLabel(self.tab_results)
+        self.label_22.setObjectName(u"label_22")
+        self.label_22.setGeometry(QRect(20, 50, 81, 31))
+        self.label_22.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";\n"
+"color: rgb(7, 64, 128);")
+        self.label_23 = QLabel(self.tab_results)
+        self.label_23.setObjectName(u"label_23")
+        self.label_23.setGeometry(QRect(270, 120, 31, 16))
+        self.label_24 = QLabel(self.tab_results)
+        self.label_24.setObjectName(u"label_24")
+        self.label_24.setGeometry(QRect(630, 120, 51, 16))
+        self.label_25 = QLabel(self.tab_results)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setGeometry(QRect(270, 150, 61, 16))
+        self.label_26 = QLabel(self.tab_results)
+        self.label_26.setObjectName(u"label_26")
+        self.label_26.setGeometry(QRect(630, 150, 61, 16))
+        self.label_27 = QLabel(self.tab_results)
+        self.label_27.setObjectName(u"label_27")
+        self.label_27.setGeometry(QRect(520, 30, 171, 31))
+        self.label_27.setStyleSheet(u"font: 24pt \".AppleSystemUIFont\";")
+        self.label_28 = QLabel(self.tab_results)
+        self.label_28.setObjectName(u"label_28")
+        self.label_28.setGeometry(QRect(690, 0, 81, 81))
+        self.label_28.setPixmap(QPixmap(u"logo.png"))
+        self.label_29 = QLabel(self.tab_results)
+        self.label_29.setObjectName(u"label_29")
+        self.label_29.setGeometry(QRect(560, 0, 131, 31))
+        self.label_29.setStyleSheet(u"font: 18pt \".AppleSystemUIFont\";")
+        self.line = QFrame(self.tab_results)
+        self.line.setObjectName(u"line")
+        self.line.setGeometry(QRect(350, 80, 20, 101))
+        self.line.setFrameShape(QFrame.Shape.VLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.date_select_start = QDateTimeEdit(self.tab_results)
+        self.date_select_start.setObjectName(u"date_select_start")
+        self.date_select_start.setGeometry(QRect(50, 10, 141, 31))
+        self.date_select_start.setDateTime(QDateTime(QDate(2025, 1, 1), QTime(0, 0, 0)))
+        self.date_select_start.setCalendarPopup(True)
+        self.date_select_end = QDateTimeEdit(self.tab_results)
+        self.date_select_end.setObjectName(u"date_select_end")
+        self.date_select_end.setGeometry(QRect(220, 10, 141, 31))
+        self.date_select_end.setDateTime(QDateTime(QDate(2025, 1, 1), QTime(0, 0, 0)))
+        self.date_select_end.setCalendarPopup(True)
+        self.tabWidget.addTab(self.tab_results, "")
+        MainWindow.setCentralWidget(self.centralwidget)
+
+        self.retranslateUi(MainWindow)
+
+        self.tabWidget.setCurrentIndex(0)
+
+
+        QMetaObject.connectSlotsByName(MainWindow)
+    # setupUi
+
+    def retranslateUi(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e27\u0e25\u0e32\u0e40\u0e23\u0e34\u0e48\u0e21\u0e07\u0e32\u0e19 : ", None))
+        self.lbl_StartTime.setText(QCoreApplication.translate("MainWindow", u"00:00", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e49\u0e32\u0e07\u0e2b\u0e38\u0e49\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e08\u0e33\u0e01\u0e31\u0e14", None))
+        self.label_12.setText("")
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u0e01\u0e33\u0e25\u0e31\u0e07\u0e44\u0e1f\u0e1f\u0e49\u0e32\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"(\u0e27\u0e31\u0e15\u0e15\u0e4c)", None))
+        self.lbl_Power.setText(QCoreApplication.translate("MainWindow", u"XXXX", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"\u0e08\u0e33\u0e19\u0e27\u0e19\u0e44\u0e1f\u0e2b\u0e19\u0e48\u0e27\u0e22\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"(\u0e2b\u0e19\u0e48\u0e27\u0e22)", None))
+        self.lbl_Energy.setText(QCoreApplication.translate("MainWindow", u"XXX", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e40\u0e23\u0e47\u0e27\u0e43\u0e19\u0e01\u0e32\u0e23\u0e1c\u0e25\u0e34\u0e15", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"(\u0e0a\u0e34\u0e49\u0e19/\u0e19\u0e32\u0e17\u0e35)", None))
+        self.lbl_Preformance.setText(QCoreApplication.translate("MainWindow", u"XXX", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0e08\u0e33\u0e19\u0e27\u0e19\u0e17\u0e35\u0e48\u0e1c\u0e25\u0e34\u0e15\u0e44\u0e14\u0e49", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"(\u0e0a\u0e34\u0e49\u0e19)", None))
+        self.lbl_CountTotal.setText(QCoreApplication.translate("MainWindow", u"XXXX", None))
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e21\u0e35\u0e48\u0e42\u0e04\u0e23\u0e32\u0e0a\u0e2b\u0e49\u0e32\u0e14\u0e32\u0e27", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01", None))
+        self.btn_update.setText(QCoreApplication.translate("MainWindow", u"\u0e2d\u0e31\u0e1e\u0e40\u0e14\u0e15", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_main), QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e49\u0e32\u0e2b\u0e25\u0e31\u0e01", None))
+        self.btn_LoadDB.setText(QCoreApplication.translate("MainWindow", u"\u0e42\u0e2b\u0e25\u0e14\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"\u0e40\u0e27\u0e25\u0e32\u0e40\u0e23\u0e34\u0e48\u0e21\u0e17\u0e33\u0e07\u0e32\u0e19", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"\u0e04\u0e27\u0e32\u0e21\u0e40\u0e23\u0e47\u0e27\u0e43\u0e19\u0e01\u0e32\u0e23\u0e1c\u0e25\u0e34\u0e15", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"\u0e08\u0e33\u0e19\u0e27\u0e19\u0e17\u0e35\u0e48\u0e1c\u0e25\u0e34\u0e15\u0e44\u0e14\u0e49", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"\u0e1e\u0e25\u0e31\u0e07\u0e07\u0e32\u0e19\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49", None))
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e19\u0e48\u0e27\u0e22\u0e44\u0e1f\u0e17\u0e35\u0e48\u0e43\u0e0a\u0e49", None))
+        self.btn_Delete.setText(QCoreApplication.translate("MainWindow", u"\u0e25\u0e1a", None))
+        self.btn_Edit.setText(QCoreApplication.translate("MainWindow", u"\u0e41\u0e01\u0e49\u0e44\u0e02\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25", None))
+        self.lbl_Resulte_RecordTime.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.lbl_Resulte_StartTime.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.lbl_Resulte_Preformance.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.lbl_Resulte_energy.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.lbl_Resulte_power.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.lbl_Resulte_TotalCount.setText(QCoreApplication.translate("MainWindow", u"-", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48", None))
+        self.label_21.setText(QCoreApplication.translate("MainWindow", u"\u0e16\u0e36\u0e07", None))
+        self.label_22.setText(QCoreApplication.translate("MainWindow", u"\u0e2a\u0e23\u0e38\u0e1b\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25", None))
+        self.label_23.setText(QCoreApplication.translate("MainWindow", u"\u0e0a\u0e34\u0e49\u0e19", None))
+        self.label_24.setText(QCoreApplication.translate("MainWindow", u"\u0e0a\u0e34\u0e49\u0e19/\u0e19\u0e32\u0e17\u0e35", None))
+        self.label_25.setText(QCoreApplication.translate("MainWindow", u"\u0e27\u0e31\u0e15\u0e15\u0e4c(\u0e40\u0e09\u0e25\u0e35\u0e48\u0e22)", None))
+        self.label_26.setText(QCoreApplication.translate("MainWindow", u"\u0e23\u0e27\u0e21", None))
+        self.label_27.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e21\u0e35\u0e48\u0e42\u0e04\u0e23\u0e32\u0e0a\u0e2b\u0e49\u0e32\u0e14\u0e32\u0e27", None))
+        self.label_28.setText("")
+        self.label_29.setText(QCoreApplication.translate("MainWindow", u"\u0e2b\u0e49\u0e32\u0e07\u0e2b\u0e38\u0e49\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e08\u0e33\u0e01\u0e31\u0e14", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_results), QCoreApplication.translate("MainWindow", u"\u0e2a\u0e23\u0e38\u0e1b", None))
+    # retranslateUi
+
