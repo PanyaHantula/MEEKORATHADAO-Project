@@ -3,13 +3,12 @@
 ############################################
 import sys,sqlite3
 import mysql.connector
-from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QMessageBox, QPushButton
+from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QPushButton, \
+                            QMessageBox, QWidget, QVBoxLayout, QLabel, QLineEdit
 from PySide6.QtCore import QThread, QObject, Signal, Slot
 import datetime
 import time
 from main_gui import Ui_MainWindow
-
-global TotalCount
 
 class IR_Count_Worker(QObject):
     # PyQt Signals
@@ -41,7 +40,42 @@ class PZEM_Worker(QObject):
     def reset(self):
         self.Power = 100
         self.Energy = 0    
-                                 
+
+# New windows for Edit Data in DB
+# class Edit_DB_Window(QWidget):
+#     def __init__(self):
+#         super().__init__()
+#         self.setWindowTitle("แก้ไขข้อมูล ") 
+        
+#         self.layout = QVBoxLayout()
+#         self.label = QLabel("จำนวนที่ผลิตได้ (ชิ้น)")
+
+#         self.line_edit = QLineEdit() 
+#         self.line_edit.returnPressed.connect(lambda: self.do_action()) 
+
+#         self.btn_Enter = QPushButton(text="ตกลง")
+#         self.btn_Enter.clicked.connect(self.Update_DB)
+        
+#         self.layout.addWidget(self.label)
+#         self.layout.addWidget(self.line_edit)
+#         self.layout.addWidget(self.btn_Enter)
+#         self.setLayout(self.layout)
+        
+#     def do_action(self): 
+#         self.Update_DB()
+
+#     def Update_DB(self):
+#         value = self.line_edit.text() 
+        
+#         dlg = QMessageBox(self)
+#         dlg.setWindowTitle("แจ้งเตือน !!")
+#         dlg.setText("บันทึกข้อมูลสำเร็จ")
+#         button = dlg.exec()
+
+#         if button == QMessageBox.Ok:
+#             print(f"Update Data Base: {value}") 
+#             self.close()
+                                        
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -58,11 +92,14 @@ class MainWindow(QMainWindow):
         # self.ui.lbl_Power.setText("0")  
         # self.ui.lbl_Energy.setText("0")  
         
-        self.ui.date_select_start.setDate(datetime.datetime.now() - datetime.timedelta(days=1))
+        self.ui.date_select_start.setDate(datetime.datetime.now())
         self.ui.date_select_end.setDate(datetime.datetime.now())
+        
         self.ui.btn_update.clicked.connect(self.add_DataToDataBase)
         self.ui.btn_LoadDB.clicked.connect(self.loadDataBaseToResulteTable)
         self.ui.btn_Delete.clicked.connect(self.delete_DataFromDataBase)
+        # self.ui.btn_Edit.clicked.connect(self.ShowEditWindows)
+        self.ui.btn_Edit.hide()
     
     def setThread(self):
         # Initialize worker and thread
@@ -84,6 +121,11 @@ class MainWindow(QMainWindow):
         self.PZEM_Worker.PZEM_ThreadProgress.connect(self.update_PowerEnergy)     # Connect signals and slots
         self.PZEM_thread.start()    # Start Thread
     
+    # Call Windows
+    # def ShowEditWindows(self,checked):
+    #     self.EditWindows = Edit_DB_Window()
+    #     self.EditWindows.show()
+        
     # Update PowerEnergy
     def update_PowerEnergy(self,power,energy):
         self.ui.lbl_Power.setText(str(power))  
@@ -162,25 +204,20 @@ class MainWindow(QMainWindow):
     
     # # Load data form DB and update to table resulteview   
     def loadDataBaseToResulteTable(self):
+        self.ui.date_select_end.setDateTime(datetime.datetime.now())
         
         dateStart = self.ui.date_select_start.text()
         dateEnd = self.ui.date_select_end.text()
         
         try:
             # count total row with select from DB
-            print("SELECT COUNT(*) FROM dataLoger WHERE time BETWEEN '" + dateStart + "' AND '" + dateEnd + "'")
             mydb=self.connect_db()
             mycursor = mydb.cursor()  
             mycursor.execute("SELECT COUNT(*) FROM dataLoger WHERE time BETWEEN '" + dateStart + "' AND '" + dateEnd + "'")
-            results = mycursor.fetchall()
-            
-            # SELECT * FROM ATM WHERE 
-            # TRANSACTION_TIME BETWEEN
-            # '2001-02-01 10:00:00' AND
-            # '2007-03-01 22:00:00';
- 
+            resulte = mycursor.fetchall()
+
             # create Table
-            self.ui.tw_Resulte_DB.setRowCount(results[0][0])
+            self.ui.tw_Resulte_DB.setRowCount(resulte[0][0])
             self.ui.tw_Resulte_DB.setColumnCount(6)
             
             self.ui.tw_Resulte_DB.setHorizontalHeaderItem(0, QTableWidgetItem("Time Stamp"))
@@ -190,20 +227,45 @@ class MainWindow(QMainWindow):
             self.ui.tw_Resulte_DB.setHorizontalHeaderItem(4, QTableWidgetItem("Power"))
             self.ui.tw_Resulte_DB.setHorizontalHeaderItem(5, QTableWidgetItem("Energy"))
             
-            # load data in DB
-            #mycursor.execute("select * from dataLoger")
-            mycursor.execute("SELECT * FROM dataLoger WHERE time BETWEEN '" + dateStart + "' AND '" + dateEnd + "'")
-            results = mycursor.fetchall()
-            tablerow = 0
-            for row in results:
-                self.ui.tw_Resulte_DB.setItem(tablerow,0,QTableWidgetItem(str(row[0])))
-                self.ui.tw_Resulte_DB.setItem(tablerow,1,QTableWidgetItem(str(row[1])))
-                self.ui.tw_Resulte_DB.setItem(tablerow,2,QTableWidgetItem(str(row[2])))
-                self.ui.tw_Resulte_DB.setItem(tablerow,3,QTableWidgetItem(str(row[3])))
-                self.ui.tw_Resulte_DB.setItem(tablerow,4,QTableWidgetItem(str(row[4])))
-                self.ui.tw_Resulte_DB.setItem(tablerow,5,QTableWidgetItem(str(row[5])))
-                tablerow += 1
+            if int(resulte[0][0]) > 0 :
+                    
+                # load data in DB
+                #mycursor.execute("select * from dataLoger")
+                mycursor.execute("SELECT * FROM dataLoger WHERE time BETWEEN '" + dateStart + "' AND '" + dateEnd + "'")
+                results = mycursor.fetchall()
+                tablerow = 0
+                for row in results:
+                    self.ui.tw_Resulte_DB.setItem(tablerow,0,QTableWidgetItem(str(row[0])))
+                    self.ui.tw_Resulte_DB.setItem(tablerow,1,QTableWidgetItem(str(row[1])))
+                    self.ui.tw_Resulte_DB.setItem(tablerow,2,QTableWidgetItem(str(row[2])))
+                    self.ui.tw_Resulte_DB.setItem(tablerow,3,QTableWidgetItem(str(row[3])))
+                    self.ui.tw_Resulte_DB.setItem(tablerow,4,QTableWidgetItem(str(row[4])))
+                    self.ui.tw_Resulte_DB.setItem(tablerow,5,QTableWidgetItem(str(row[5])))
+                    tablerow += 1
 
+                # cal resulte 
+                totalRowCount = int(tablerow)
+                from collections import defaultdict
+                output = defaultdict(list)
+                for col in range(2,6):
+                    for row in range(self.ui.tw_Resulte_DB.rowCount()):
+                        value = float(self.ui.tw_Resulte_DB.item(row, col).text())
+                        output[f'column_{col}'].append(value)
+
+                self.ui.lbl_Resulte_DateStart.setText(dateStart)
+                self.ui.lbl_Resulte_DateStart_2.setText(dateEnd)
+                self.ui.lbl_Resulte_TotalCount.setText(str(sum(output['column_2'])))
+                self.ui.lbl_Resulte_Preformance.setText(str(sum(output['column_3']) / totalRowCount))
+                self.ui.lbl_Resulte_power.setText(str(sum(output['column_4']) / totalRowCount))
+                self.ui.lbl_Resulte_energy.setText(str(sum(output['column_5']) / totalRowCount))
+            
+            else:
+                # Meassage Box
+                dlg = QMessageBox(self)
+                dlg.setWindowTitle("Warning")
+                dlg.setText("ไม่มีข้อมูล \nโปรดเลือกช่วงวันที่ใหม่อีกครั้ง")
+                button = dlg.exec()
+    
             # cal resulte in resulte page
         except sqlite3.Error as error:
             print("Error insert data : ",error)   
