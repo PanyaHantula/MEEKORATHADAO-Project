@@ -4,11 +4,12 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QPushButton, \
                             QMessageBox, QWidget, QVBoxLayout, QLabel, QLineEdit
-from PySide6.QtCore import QThread, QObject, Signal, Slot
+from PySide6.QtCore import QThread, QObject, Signal, Slot, QTimer
 import datetime
 import time
 from main_gui import Ui_MainWindow
 from DB import Database
+
 
 class IR_Count_Worker(QObject):
     # PyQt Signals
@@ -53,6 +54,7 @@ class MainWindow(QMainWindow):
         self.setThread()
         self.loadDatabase()
         self.resetData()
+        self.setClock()
         
         self.ui.date_select_start.setDate(datetime.datetime.now())
         self.ui.date_select_end.setDate(datetime.datetime.now())
@@ -62,6 +64,20 @@ class MainWindow(QMainWindow):
         self.ui.btn_Delete.clicked.connect(self.delete_DataFromDataBase)
         # self.ui.btn_Edit.clicked.connect(self.ShowEditWindows)
         self.ui.btn_Edit.hide()
+        
+    def setClock(self):
+        timer = QTimer(self)
+        timer.timeout.connect(self.showTime)
+        timer.start(1000)
+    
+       # method called by timer
+    def showTime(self):
+        label_time = datetime.datetime.now().strftime("%H:%M")
+        self.ui.lbl_Clock.setText(label_time)
+        
+        dateNow = datetime.datetime.now().strftime("%Y-%m-%d")
+        self.ui.lbl_dateNow.setText(dateNow)
+            
     def setThread(self):
         # Initialize worker and thread
         # IR Counter
@@ -138,12 +154,12 @@ class MainWindow(QMainWindow):
         self.ui.twDB.setRowCount(resultes[0][0])
         self.ui.twDB.setColumnCount(6)
         
-        self.ui.twDB.setHorizontalHeaderItem(0, QTableWidgetItem("Time Stamp"))
-        self.ui.twDB.setHorizontalHeaderItem(1, QTableWidgetItem("Start Time"))
-        self.ui.twDB.setHorizontalHeaderItem(2, QTableWidgetItem("Total Product"))
-        self.ui.twDB.setHorizontalHeaderItem(3, QTableWidgetItem("Preformance"))
-        self.ui.twDB.setHorizontalHeaderItem(4, QTableWidgetItem("Power"))
-        self.ui.twDB.setHorizontalHeaderItem(5, QTableWidgetItem("Energy"))
+        self.ui.twDB.setHorizontalHeaderItem(0, QTableWidgetItem("เวลาบันทึก"))
+        self.ui.twDB.setHorizontalHeaderItem(1, QTableWidgetItem("เวลาเริ่มงาน"))
+        self.ui.twDB.setHorizontalHeaderItem(2, QTableWidgetItem("จำนวนทั้งหมดที่ผลิตได้(ชิ้น)"))
+        self.ui.twDB.setHorizontalHeaderItem(3, QTableWidgetItem("ความเร็วในการผลิต(ชิ้น/นาที)"))
+        self.ui.twDB.setHorizontalHeaderItem(4, QTableWidgetItem("กำลังไฟฟ้า(วัตต์)"))
+        self.ui.twDB.setHorizontalHeaderItem(5, QTableWidgetItem("พลังงานไฟฟ้าที่ใช้ไป(หน่วย)"))
         
         # load data in DB
         sql = ("select * from dataLoger")
@@ -173,12 +189,12 @@ class MainWindow(QMainWindow):
         self.ui.tw_Resulte_DB.setRowCount(resultes[0][0])
         self.ui.tw_Resulte_DB.setColumnCount(6)
         
-        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(0, QTableWidgetItem("Time Stamp"))
-        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(1, QTableWidgetItem("Start Time"))
-        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(2, QTableWidgetItem("Total Product"))
-        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(3, QTableWidgetItem("Preformance"))
-        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(4, QTableWidgetItem("Power"))
-        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(5, QTableWidgetItem("Energy"))
+        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(0, QTableWidgetItem("เวลาบันทึก"))
+        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(1, QTableWidgetItem("เวลาเริ่มงาน"))
+        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(2, QTableWidgetItem("จำนวนทั้งหมดที่ผลิตได้(ชิ้น)"))
+        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(3, QTableWidgetItem("ความเร็วในการผลิต(ชิ้น/นาที)"))
+        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(4, QTableWidgetItem("กำลังไฟฟ้า(วัตต์)"))
+        self.ui.tw_Resulte_DB.setHorizontalHeaderItem(5, QTableWidgetItem("พลังงานไฟฟ้าที่ใช้ไป(หน่วย)"))
         
         if int(resultes[0][0]) > 0 :
                 
